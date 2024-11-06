@@ -1,0 +1,145 @@
+<div class="card">
+        <div class="card-header">
+            <h5>
+                <i class="fas fa-futbol" style="width: 20px; height: auto; vertical-align: middle;"></i>
+                {{(player.id > 0)? 'Update':'Create'}} Player
+                <i class="fas fa-futbol" style="width: 20px; height: auto; vertical-align: middle;"></i>
+            </h5>
+        </div>
+        <div class="card-body">
+            <div class="form-container">
+                <form (ngSubmit)="onSubmit(playerForm)" #playerForm="ngForm">
+                    <div>
+                        <input placeholder="Name" name="name" [(ngModel)]="player.name" class="form-control my-2"
+                            required #name="ngModel">
+                        @if(name.invalid && (name.dirty || name.touched)){
+                        @if(name.errors!['required']){
+                        <div class="text-danger fw-bold text-left" style="font-size: 15px;">
+                            The name is required...
+                        </div>
+                        }
+                        }
+                    </div>
+                    <div>
+                        <input placeholder="LastName" name="lastName" [(ngModel)]="player.lastName"
+                            class="form-control my-2" required #lastName="ngModel">
+                        @if(lastName.invalid && (lastName.dirty || lastName.touched)){
+                        @if(lastName.errors!['required']){
+                        <div class="text-danger fw-bold text-left" style="font-size: 15px;">
+                            The lastName is required...
+                        </div>
+                        }
+                        }
+                    </div>
+                    <div>
+                        <input placeholder="Age" name="age" [(ngModel)]="player.age" class="form-control my-2" required
+                            #age="ngModel">
+                        @if(age.invalid && (age.dirty || age.touched)){
+                        @if(age.errors!['required']){
+                        <div class="text-danger fw-bold text-left" style="font-size: 15px;">
+                            The age is required...
+                        </div>
+                        }
+                        }
+                    </div>
+                    <div>
+                        <input placeholder="Nation" name="nationality" [(ngModel)]="player.nationality"
+                            class="form-control my-2" required #nationality="ngModel">
+                        @if(nationality.invalid && (nationality.dirty || nationality.touched)){
+                        @if(nationality.errors!['required']){
+                        <div class="text-danger fw-bold text-left" style="font-size: 15px;">
+                            The nationality is required...
+                        </div>
+                        }
+                        }
+                    </div>
+                    <div>
+                        <input placeholder="Number" name="number" type="number" [(ngModel)]="player.number" class="form-control my-2"
+                            required #number="ngModel">
+                        @if(number.invalid && (number.dirty || number.touched)){
+                        @if(number.errors!['required']){
+                        <div class="text-danger fw-bold text-left" style="font-size: 15px;">
+                            The number is required...
+                        </div>
+                        }
+                        @if(number.errors!['number']){
+                        <div class="text-danger fw-bold text-left" style="font-size: 15px;">
+                            The number can't be letters
+                        </div>
+                        }
+                        }
+                    </div>
+                    <div>
+                        <input placeholder="Position" name="position" [(ngModel)]="player.position"
+                            class="form-control my-1" required #position="ngModel">
+                        @if(position.invalid && (position.dirty || position.touched)){
+                        @if(position.errors!['required']){
+                        <div class="text-danger fw-bold text-left" style="font-size: 15px;">
+                            The position is required...
+                        </div>
+                        }
+                        }
+                    </div>
+                    <div>
+                        <input placeholder="Email" name="email" type="email" [(ngModel)]="player.email"
+                            class="form-control my-1" required email #email="ngModel">
+                        @if(email.invalid && (email.dirty || email.touched)){
+                        @if(email.errors!['required']){
+                        <div class="text-danger fw-bold text-left" style="font-size: 15px;">
+                            The email is required...
+                        </div>
+                        }
+                        @if(email.errors!['email']){
+                        <div class="text-danger fw-bold text-left" style="font-size: 15px;">
+                            The email is not in the correct format
+                        </div>
+                        }
+                        }
+                    </div>
+                    <div>
+                        <input placeholder="Password" name="password" type="password" [(ngModel)]="player.password"
+                            class="form-control my-1" required minlength="8" #password="ngModel">
+                        @if(password.invalid && (password.dirty || password.touched)){
+                        @if(password.errors!['required']){
+                        <div class="text-danger fw-bold text-left" style="font-size: 15px;">
+                            The password is required...
+                        </div>
+                        }
+                        @if(password.errors!['minlength']){
+                        <div class="text-danger fw-bold text-left" style="font-size: 15px;">
+                            The password must be 8 characters long...
+                        </div>
+                        }
+                        }
+                    </div>
+                    <div>
+                        <input placeholder="Image URL" name="imageUrl"  [(ngModel)]="player.imageUrl"
+                            class="form-control my-1" required minlength="8" #imageUrl="ngModel">
+                        @if(imageUrl.invalid && (imageUrl.dirty || imageUrl.touched)){
+                        @if(imageUrl.errors!['required']){
+                        <div class="text-danger fw-bold text-left" style="font-size: 15px;">
+                            The imageUrl is required...
+                        </div>
+                        }
+                        @if(imageUrl.errors!['minlength']){
+                        <div class="text-danger fw-bold text-left" style="font-size: 15px;">
+                            The imageUrl must be 8 characters long...
+                        </div>
+                        }
+                        }
+                    </div>
+                    <div>                       
+                        <button 
+                            type="submit" 
+                            class="btn btn-action m-2" 
+                            [disabled]="playerForm.invalid">
+                            {{(player.id > 0)? 'UPDATE':'CREATE'}}
+                        </button>
+                        <button type="button" class="btn btn-clean m-2" (click)="onClear(playerForm)">
+                            CLEAN
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+</div>
