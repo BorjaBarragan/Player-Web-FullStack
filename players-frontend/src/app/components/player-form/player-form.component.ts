@@ -17,6 +17,7 @@ import { PlayerService } from '../../services/player.service';
 export class PlayerFormComponent implements OnInit {
 
   player: Player;
+  errors : any = {};
 
   //Inicializamos propiedad player en el constructor. 
   //Esto asegura que player este vacio al inicio, para poder llenarse con datos del form.
@@ -29,7 +30,8 @@ export class PlayerFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.sharingData.selectPlayerEventEmitter.subscribe(player => this.player = player);
+    this.sharingData.errorsPlayerFormEventEmitter.subscribe(errors => this.errors = errors)
+    this.sharingData.selectPlayerEventEmitter.subscribe(player => this.player = player);
     this.route.paramMap.subscribe(params => {
       const id: number = + (params.get('id') || '0');
       if(id > 0 ){
@@ -39,13 +41,12 @@ export class PlayerFormComponent implements OnInit {
     });
   }
 
-  //EventEmitter: Permite emitir un evento. Aquí, el evento envía un objeto Player al componente padre cuando se envía el formulario.
   onSubmit(playerForm: NgForm): void {
-    if (playerForm.valid) {
+    // if (playerForm.valid) {
       this.sharingData.newPlayerEventEmitter.emit(this.player);
-    }
-    playerForm.reset();
-    playerForm.resetForm();
+    // }
+    // playerForm.reset();
+    // playerForm.resetForm();
   }
 
   onClear(playerForm: NgForm): void {

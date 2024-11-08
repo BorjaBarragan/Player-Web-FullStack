@@ -7,6 +7,11 @@ import static jakarta.persistence.GenerationType.*;
 import jakarta.persistence.Column;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "players")
@@ -16,27 +21,36 @@ public class Player {
     @GeneratedValue(strategy = IDENTITY)
     private Long id;
 
+    @NotEmpty
     private String name;
 
     @Column(name = "lastname")
-    private String lastname;
+    @NotEmpty
+    private String lastName;
 
+    @NotNull
     private Long age;
 
+    @NotEmpty
     private String nationality;
 
+    @NotNull
     private Long number;
 
+    @NotEmpty
     private String position;
 
+    @NotBlank
+    @Email
     private String email;
 
+    @NotBlank
+    @Size(min=8,max=15)
     private String password;
 
     @Column(name = "imageUrl")
+    @NotBlank
     private String imageUrl;
-
-    // private imagen imageUrl;
 
     public String getImageUrl() {
         return imageUrl;
@@ -63,11 +77,11 @@ public class Player {
     }
 
     public String getLastName() {
-        return lastname;
+        return lastName;
     }
 
     public void setLastName(String lastname) {
-        this.lastname = lastname;
+        this.lastName = lastname;
     }
 
     public Long getAge() {

@@ -45,20 +45,43 @@ export class PlayerAppComponent implements OnInit {
   addPlayer() {
     this.sharingData.newPlayerEventEmitter.subscribe(player => {
       if (player.id > 0) {
-        this.service.update(player).subscribe(playerUpdated => {
-          this.players = this.players.map(p => (p.id == playerUpdated.id) ? { ...playerUpdated } : p);
-        })
+        this.service.update(player).subscribe(
+          {
+            next: (playerUpdated) => {
+              this.players = this.players.map(p => (p.id == playerUpdated.id) ? { ...playerUpdated } : p);
+              this.router.navigate(['/players'], { state: { players: this.players } });
+              Swal.fire({
+                title: "Updated!",
+                text: "The player is updated successfully",
+                icon: "success"
+              });
+            },
+            error: (err) => {
+              // console.log(err.error)
+              if(err.status == 400){
+              this.sharingData.errorsPlayerFormEventEmitter.emit(err.error);
+              }
+            }
+          })
       } else {
-        this.service.create(player).subscribe(playerNew => {
-          this.players = [...this.players, { ...playerNew }];
+        this.service.create(player).subscribe({
+          next: playerNew => {
+            this.players = [...this.players, { ...playerNew }];
+            this.router.navigate(['/players'], { state: { players: this.players } });
+            Swal.fire({
+              title: "Created new Player!",
+              text: "The player is created successfully",
+              icon: "success"
+            });
+          },
+          error: (err) => {
+            console.log(err.status)
+            if(err.status == 400){
+              this.sharingData.errorsPlayerFormEventEmitter.emit(err.error);
+            }
+          }
         })
       }
-      this.router.navigate(['/players']);
-      Swal.fire({
-        title: "Saved!",
-        text: "The player is saved successfully",
-        icon: "success"
-      });
     });
   }
 
@@ -77,12 +100,15 @@ export class PlayerAppComponent implements OnInit {
         //then se ejecuta despues de responder la alerta
       }).then((result) => {
         if (result.isConfirmed) {
-          //crea un nuvo aray de players excluyendo el jugador con el id qeu se pasa.
-          this.players = this.players.filter(player => player.id != id);
-          //Cuando estamos en la misma pagina debemos navegar a otra para luego volver y que se vea actualizado.
-          //El then() se usa solo para ejecutar algo después de que la promesa se haya resuelto, sin importar el resultado
-          this.router.navigate(['/players/create'], { skipLocationChange: true }).then(() => {
-            this.router.navigate(['/players'], { state: { players: this.players } })
+
+          this.service.delete(id).subscribe(()=> {
+            //crea un nuvo aray de players excluyendo el jugador con el id qeu se pasa.
+            this.players = this.players.filter(player => player.id != id);
+            //Cuando estamos en la misma pagina debemos navegar a otra para luego volver y que se vea actualizado.
+            //El then() se usa solo para ejecutar algo después de que la promesa se haya resuelto, sin importar el resultado
+            this.router.navigate(['/players/create'], { skipLocationChange: true }).then(() => {
+              this.router.navigate(['/players']);
+            });
           })
           Swal.fire({
             title: "Deleted!",

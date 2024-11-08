@@ -22,17 +22,19 @@ export class PlayerService {
     return this.http.get<Player[]>(this.url);
   }
 
-  findById(id:number): Observable<Player> {
+  findById(id: number): Observable<Player> {
     return this.http.get<Player>(`${this.url}/${id}`);
   }
 
-  create(player: Player):Observable <Player>{
-    return this.http.post<Player>(this.url,player);
+  create(player: Player): Observable<Player> {
+    return this.http.post<Player>(this.url, player);
   }
 
-  update(player:Player):Observable<Player>{
-    return this.http.put<Player>(`${this.url}/${player.id}`,player);
+  update(player: Player): Observable<Player> {
+    return this.http.put<Player>(`${this.url}/${player.id}`, player);
   }
 
-  //132 repasar anteriores!
+  delete(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.url}/${id}`);
+  }
 }
