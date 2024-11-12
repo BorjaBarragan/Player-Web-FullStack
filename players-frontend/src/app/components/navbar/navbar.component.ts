@@ -11,5 +11,5 @@ import { Player } from '../../model/player';
 export class NavbarComponent {
 
   @Input() players: Player[] = [];
-  
+
 }

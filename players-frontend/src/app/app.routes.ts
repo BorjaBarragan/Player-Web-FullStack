@@ -1,8 +1,8 @@
 import { Routes } from '@angular/router';
 import { PlayerComponent } from './components/player/player.component';
 import { PlayerFormComponent } from './components/player-form/player-form.component';
+import { CartAppComponent } from './components/cart-app/cart-app.component';
 import { CartComponent } from './components/cart/cart.component';
-import { StoreComponent } from './components/store/store.component';
 
 export const routes: Routes = [
     {
@@ -24,7 +24,7 @@ export const routes: Routes = [
     },
     {
         path: 'store',
-        component: CartComponent
+        component: CartAppComponent
     },
     {
         path:'cart',

@@ -1,0 +1,13 @@
+<h3 class="fw-bold text-left" style="font-size: 35px;">
+    <div style="text-align: center;">
+        <span class="title-page">
+            {{ titleStore }}
+        </span>
+    </div>
+</h3>
+<catalog [products]="products" (productEventEmitter)="onAddCart($event)" />
+@if(items.length>0){
+<cart [items]="items" (idProductEventEmitter)="onDeleteCart($event)" [total]="total" />
+} @else {
+<div class="alert alert-warning my-4"> There are not products in the cart </div>
+}

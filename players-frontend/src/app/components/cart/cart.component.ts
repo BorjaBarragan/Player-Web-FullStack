@@ -1,24 +1,25 @@
-import { Component, OnInit } from '@angular/core';
-import { ProductService } from '../../services/product.service';
-import { Product } from '../../model/product';
-import { CatalogComponent } from '../catalog/catalog.component';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { CartItem } from '../../model/cartItem';
 
 @Component({
-  selector: 'cart-app',
+  selector: 'cart',
   standalone: true,
-  imports: [CatalogComponent],
-  templateUrl: './cart.component.html'
+  imports: [],
+  templateUrl: './cart.component.html',
+
 })
-export class CartComponent implements OnInit {
+export class CartComponent {
 
-  products: Product[] = [];
+  @Input() items: CartItem[] = [];
 
-  titleCard : string = "Carro Compra"; 
+  @Input() total = 0;
 
-  constructor(private service: ProductService) { }
+  @Output() idProductEventEmitter = new EventEmitter();
 
-  ngOnInit(): void {
-    this.products = this.service.findAll();
+  titleCart: string = "Shopping cart";
+
+  onDeleteCart(id: number) {
+    this.idProductEventEmitter.emit(id)
   }
 
 }

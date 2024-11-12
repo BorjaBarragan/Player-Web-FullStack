@@ -1,8 +1,43 @@
-<h3 class="fw-bold text-left" style="font-size: 35px;">
+<h3 class="fw-bold text-left my-4" style="font-size: 35px;">
     <div style="text-align: center;">
         <span class="title-page">
-            {{ titleCard }}
+            {{ titleCart }}
         </span>
     </div>
 </h3>
-<catalog [products]="products"/>
+@if(items.length>0){
+<table class="table table-hover table-striped">
+    <thead>
+        <tr>
+            <th>Product</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (item of items; track $index) {
+        <tr>
+            <td>{{item.product.name}}</td>
+            <td>{{item.product.price.toFixed(2)}}</td>
+            <td>{{item.quantity}}</td>
+            <td>{{ (item.product.price * item.quantity).toFixed(2) }}</td>
+            <td>
+                <button class="btn btn-error btn-sm" (click)="onDeleteCart(item.product.id)">
+                    Delete
+                </button>
+            </td>
+        </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="3" class="text-end fw-bold">Total</td>
+            <td colspan="2" class="text-end fw-bold">{{total.toFixed(2)}}€</td>
+        </tr>
+    </tfoot>
+</table>
+}@else {
+<div class="alert alert-warning">There are not products in the cart</div>
+}

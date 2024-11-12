@@ -1,9 +1,8 @@
 <div class="container">
     <div class="row">
         @for (product of products; track $index) {
-        <div class="col-12 col-md-6 col-lg-4 my-3">
-            <product-card [product]="product" />
-        </div>
+        <div product-card [product]="product" class="col-12 col-md-6 col-lg-4 my-3"
+        (productEventEmitter)="onAddCart($event)"></div>
         }
     </div>
 </div>
