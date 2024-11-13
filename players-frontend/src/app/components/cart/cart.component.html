@@ -22,10 +22,10 @@
             <td>{{item.product.name}}</td>
             <td>{{item.product.price.toFixed(2)}}</td>
             <td>{{item.quantity}}</td>
-            <td>{{ (item.product.price * item.quantity).toFixed(2) }}</td>
+            <td>{{(item.product.price * item.quantity).toFixed(2)}}</td>
             <td>
                 <button class="btn btn-error btn-sm" (click)="onDeleteCart(item.product.id)">
-                    Delete
+                    <i class="fa-solid fa-trash"></i>
                 </button>
             </td>
         </tr>
