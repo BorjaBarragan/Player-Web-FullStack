@@ -16,7 +16,7 @@ export class CartComponent {
 
   @Output() idProductEventEmitter = new EventEmitter();
 
-  titleCart: string = "Shopping cart";
+  titleCart: string = "Cart";
 
   onDeleteCart(id: number) {
     this.idProductEventEmitter.emit(id)

@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Player } from '../model/player';
 import { PlayerService } from '../services/player.service';
 import Swal from 'sweetalert2';
 import { Router, RouterOutlet } from '@angular/router';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SharingDataService } from '../services/sharing-data.service';
+import { CartItem } from '../model/cartItem';
 
 @Component({
   selector: 'player-app',
@@ -16,6 +17,16 @@ import { SharingDataService } from '../services/sharing-data.service';
 export class PlayerAppComponent implements OnInit {
 
   players: Player[] = [];
+
+  items: CartItem[] = [] ;
+
+  showCart: boolean = false;  // Estado que controlará si mostrar el carrito o no
+
+  @Output() openEventEmitter = new EventEmitter();
+
+  openCart():void {
+    this.openEventEmitter.emit();
+  }
 
   constructor(
     private service: PlayerService,

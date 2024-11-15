@@ -8,6 +8,7 @@ import { ProductCardComponent } from '../product-card/product-card.component';
   imports: [ProductCardComponent],
   templateUrl: './catalog.component.html',
 })
+
 export class CatalogComponent {
 
   @Input() products !: Product[];
@@ -17,5 +18,4 @@ export class CatalogComponent {
   onAddCart(product : Product){
     this.productEventEmitter.emit(product)
   }
-
 }

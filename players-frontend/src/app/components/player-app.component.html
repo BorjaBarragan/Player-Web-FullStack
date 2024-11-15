@@ -1,4 +1,4 @@
-<navbar [players]="players"/>
+<navbar [players]="players"[items]="items" (openEventEmitter)="openCart()" />
 <div class="container my-4">
     <router-outlet/>
 </div>

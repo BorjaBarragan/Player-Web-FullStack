@@ -1,13 +1,24 @@
-<h3 class="fw-bold text-left" style="font-size: 35px;">
-    <div style="text-align: center;">
-        <span class="title-page">
-            {{ titleStore }}
-        </span>
+<div class="d-flex justify-content-end mb-4 my-4">
+    <button class="btn btn-info btn-lg" (click)="openCart()">
+        <i class="fas fa-shopping-cart me-1"></i> Cart ({{ totalItems }})
+    </button>
+</div>
+
+<div class="row">
+    <div [className]="showCart ? 'col-9' : 'col'">
+        <catalog [products]="products" (productEventEmitter)="addCart($event)" />
     </div>
-</h3>
-<catalog [products]="products" (productEventEmitter)="onAddCart($event)" />
-@if(items.length>0){
-<cart [items]="items" (idProductEventEmitter)="onDeleteCart($event)" [total]="total" />
-} @else {
-<div class="alert alert-warning my-4"> There are not products in the cart </div>
-}
+    @if(showCart){
+    <div class="col-3">
+        @if(totalItems > 0){
+        <cart [items]="cartService.getCartItems()" (idProductEventEmitter)="deleteCart($event,$event)"
+            [total]="total" />
+        <div class="d-flex justify-content-end mt-2">
+            <button class="btn btn-error" (click)="openCart()">Cerrar</button>
+        </div>
+        } @else {
+        <div class="alert alert-warning my-4">There are no products in the cart</div>
+        }
+    </div>
+    }
+</div>

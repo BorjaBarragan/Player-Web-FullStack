@@ -1,6 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { Player } from '../../model/player';
+import { CartItem } from '../../model/cartItem';
 
 @Component({
   selector: 'navbar',
@@ -11,5 +12,15 @@ import { Player } from '../../model/player';
 export class NavbarComponent {
 
   @Input() players: Player[] = [];
+
+  @Input() items: CartItem[] = [];
+
+  @Output() openEventEmitter = new EventEmitter();
+
+  @Input() totalItems : number = 0 ;
+
+  openCart():void {
+    this.openEventEmitter.emit();
+  }
 
 }
