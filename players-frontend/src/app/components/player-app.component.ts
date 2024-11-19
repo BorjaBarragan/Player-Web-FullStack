@@ -38,8 +38,6 @@ export class PlayerAppComponent implements OnInit {
   ngOnInit(): void {
     this.service.findAll().subscribe(players => {
       this.players = players
-      // console.log("ngInit")
-      // console.log(this.players)
     });
     this.addPlayer();
     this.deletePlayer();

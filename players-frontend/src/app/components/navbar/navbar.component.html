@@ -10,7 +10,7 @@
         <li class="nav-item">
           <a class="nav-link text-white" aria-current="page" [routerLink]="['/players']" [state]="{ players }">
             <i class="fas fa-home me-1"></i>
-            Home
+            Players
           </a>
         </li>
         <li class="nav-item">
@@ -20,9 +20,9 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white" [routerLink]="['/cart']" [state]="{items}">
+          <a class="nav-link text-white" [routerLink]="['/cart']" [state]="{items, showTitleCart : true }">
             <i class="fas fa-shopping-cart me-1"></i>
-            Cart ({{ totalItems }})
+            Cart<p class="cart-badge">{{ totalItems }}</p>
           </a>
         </li>
       </ul>

@@ -22,9 +22,10 @@ body {
   text-align: center;
   font-family: 'Arima', sans-serif !important;
 }
+
 .custom-table-header {
-  background-color: #3256a5 !important;  
-  color: white !important;               
+  background-color: #3256a5 !important;
+  color: white !important;
 }
 
 .text-blue-strong {
@@ -45,42 +46,42 @@ body {
 }
 
 .btn-action {
-  background-color: rgba(50, 86, 165, 0.8); 
-  color: #ffffff; 
+  background-color: rgba(50, 86, 165, 0.8);
+  color: #ffffff;
   border: none;
-  padding: 10px 20px; 
-  border-radius: 5px; 
+  padding: 10px 20px;
+  border-radius: 5px;
   font-weight: bold;
   font-size: 1em;
-  cursor: pointer; 
-  transition: background-color 0.3s ease, transform 0.2s ease; 
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .btn-action:hover {
-  background-color: rgba(50, 86, 165, 1); 
+  background-color: rgba(50, 86, 165, 1);
   color: white;
-  transform: scale(1.05); 
+  transform: scale(1.05);
 }
 
 .btn-action:disabled {
-  background-color: rgba(50, 86, 165, 0.5); 
-  cursor: not-allowed; 
+  background-color: rgba(50, 86, 165, 0.5);
+  cursor: not-allowed;
 }
 
 .btn-clean {
-  background-color: rgba(200, 200, 200, 0.8); 
-  color: #000000; 
-  border: none; 
-  padding: 10px 20px; 
+  background-color: rgba(200, 200, 200, 0.8);
+  color: #000000;
+  border: none;
+  padding: 10px 20px;
   border-radius: 5px;
-  font-weight: bold; 
+  font-weight: bold;
   font-size: 1em;
-  cursor: pointer; 
+  cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .btn-clean:hover {
-  background-color: rgb(233, 223, 80); 
+  background-color: rgb(233, 223, 80);
   transform: scale(1.05);
 }
 
@@ -100,7 +101,7 @@ body {
   border-style: solid;
   border-color: #000e8f;
   border-width: 1px;
-  color:#4b3fb9;
+  color: #4b3fb9;
 }
 
 .btn-addCart:hover {
@@ -138,9 +139,27 @@ body {
   /* Aumenta un poco más el tamaño */
 }
 
+.btn-showCart {
+  background-color: #ffffff;
+  border-style: solid;
+  border-color: #000e8f;
+  border-width: 1px;
+  color: #4b3fb9;
+}
+
+.btn-showCart:hover {
+  background-color: #ffa500;
+  border-style: solid;
+  border-color: #4b3fb9;
+  border-width: 1px;
+  color: rgb(255, 255, 254);
+
+}
+
 /* ESTILOS NAVBAR */
 .navbar-custom {
-  background-color: rgba(50, 86, 165, 0.863);
+  background: linear-gradient(145deg, #203885, #5e84d2);;
+  height: 56px;
 }
 
 .navbar-custom .navbar-brand {
@@ -149,6 +168,7 @@ body {
 
 .navbar-custom .navbar-nav .nav-link {
   color: white;
+  padding-top: 25px;
 }
 
 .navbar-custom .navbar-nav .nav-link.disabled {
@@ -172,17 +192,18 @@ body {
 }
 
 /* ESTILOS TITULO EQUIPO*/
+
 .title-page {
   color: #ffffff;
-  font-size: 1.8em;
-  font-weight: bold;
+  font-size: 2.0em;
+  font-weight: 500;
   text-align: center;
-  position: relative;
   display: inline-block;
-  padding: 10px 20px;
-  background-color: rgba(29, 66, 189, 0.692);
-  border-radius: 8px;
-  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+  padding: 12px 30px;
+  background: linear-gradient(145deg, #203885, #5e84d2);
+  border-radius: 15px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
 }
 
 /*ESTILOS TARJETA DEL FORMULARIO*/
@@ -192,24 +213,25 @@ body {
   padding: 10px;
   background-size: cover;
   background-position: center;
-  background-color: rgba(255, 255, 255, 0.9); /* Más transparente */
+  background-color: rgba(255, 255, 255, 0.9);
+  /* + transparente */
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border: 1px solid rgba(50, 86, 165, 0.2);
 }
 
 .card-header {
-  background-color: rgba(50, 86, 165, 0.85); 
-  color: white; 
-  padding: 10px; 
-  border-radius: 8px 8px 0 0; 
-  text-align: center; 
+  background-color: rgba(50, 86, 165, 0.85);
+  color: white;
+  padding: 10px;
+  border-radius: 8px 8px 0 0;
+  text-align: center;
 }
 
 .card-title {
-  font-size: 1.5em; 
-  font-weight: bold; 
-  margin: 0; 
+  font-size: 1.5em;
+  font-weight: bold;
+  margin: 0;
 }
 
 .card-body {
@@ -219,17 +241,20 @@ body {
 .form-container {
   width: 100%;
 }
+
 .zoom-image {
-  border-radius: 8px; /* Puedes ajustar el valor para hacer las esquinas más o menos redondeadas */
-}
-.zoom-image:hover {
   border-radius: 8px;
-  transform: scale(1.6); 
+  /* ajustar el valor para hacer las esquinas más o menos redondeadas */
 }
 
-.number-style{
-  font-size: 2em; 
-  font-weight: bold; 
+.zoom-image:hover {
+  border-radius: 8px;
+  transform: scale(1.6);
+}
+
+.number-style {
+  font-size: 2em;
+  font-weight: bold;
 }
 
 .product-image {
@@ -237,5 +262,19 @@ body {
 }
 
 .product-image:hover {
-  transform: scale(1.1); /* Aumenta un poco el tamaño de la imagen */
+  transform: scale(1.1);
+}
+
+.cart-badge {
+  display: inline-block;
+  background-color: #ffa500;
+  color: white;
+  border-radius: 40%;
+  width: 22px;
+  height: 22px;
+  text-align: center;
+  line-height: 25px;
+  font-size: 13px;
+  font-weight: bold;
+  margin-left: 5px;
 }

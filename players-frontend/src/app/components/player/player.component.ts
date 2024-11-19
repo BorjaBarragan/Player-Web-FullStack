@@ -12,7 +12,7 @@ import { SharingDataService } from '../../services/sharing-data.service';
 })
 export class PlayerComponent {
 
-  title: string = "Player Squad";
+  title: string = "Players";
 
   players: Player[] = [];
 

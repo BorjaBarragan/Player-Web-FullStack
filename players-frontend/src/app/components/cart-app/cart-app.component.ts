@@ -18,6 +18,7 @@ export class CartAppComponent implements OnInit {
   total: number = 0;
   totalItems: number = 0;
   showCart: boolean = false;
+  title: string = 'Store'; 
 
   constructor(private productService: ProductService, public cartService: CartService) { }
 
@@ -26,18 +27,16 @@ export class CartAppComponent implements OnInit {
     this.updateCartInfo();
   }
 
-
   addCart(product: Product): void {
     this.cartService.addCartItem({ product, quantity: 1 });
     this.updateCartInfo();
-    console.log('Se ha añadido : ', product);
+    console.log('Se ha añadido : ', product, 'desde cart-app');
   }
 
   deleteCart(id: number, product: Product): void {
     this.cartService.deleteCartItem(id);
     this.updateCartInfo();
-    console.log('Se ha eliminado : ', product);
-
+    console.log('Se ha eliminado : ', product, 'desde cart-app');
   }
 
   private updateCartInfo(): void {
